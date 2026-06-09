@@ -73,4 +73,13 @@ describe('useGitHubRepos', () => {
     expect(result.current.error).toBe('레포지토리를 불러오지 못했습니다.')
     expect(result.current.repos).toEqual([])
   })
+
+  it('sets error on network failure', async () => {
+    global.fetch = vi.fn().mockRejectedValue(new Error('Network Error'))
+
+    const { result } = renderHook(() => useGitHubRepos('testuser'))
+    await waitFor(() => expect(result.current.loading).toBe(false))
+    expect(result.current.error).toBe('레포지토리를 불러오지 못했습니다.')
+    expect(result.current.repos).toEqual([])
+  })
 })

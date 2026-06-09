@@ -22,7 +22,12 @@ export function useGitHubRepos(username: string): UseGitHubReposResult {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`)
+    setLoading(true)
+    setError(null)
+    const controller = new AbortController()
+    fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`, {
+      signal: controller.signal,
+    })
       .then((res) => {
         if (!res.ok) throw new Error('fetch failed')
         return res.json()
@@ -31,10 +36,12 @@ export function useGitHubRepos(username: string): UseGitHubReposResult {
         setRepos(data.filter((r) => !r.fork))
         setLoading(false)
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err.name === 'AbortError') return
         setError('레포지토리를 불러오지 못했습니다.')
         setLoading(false)
       })
+    return () => controller.abort()
   }, [username])
 
   return { repos, loading, error }
