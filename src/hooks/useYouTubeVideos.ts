@@ -38,7 +38,8 @@ export function useYouTubeVideos(channelId: string, maxResults = 6): UseYouTubeV
         return res.json()
       })
       .then((data) => {
-        const uploadsId: string = data.items[0].contentDetails.relatedPlaylists.uploads
+        const uploadsId: string | undefined = data.items?.[0]?.contentDetails?.relatedPlaylists?.uploads
+        if (!uploadsId) throw new Error('uploads playlist not found')
         return fetch(
           `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=${maxResults}&key=${apiKey}`,
           { signal: controller.signal }
