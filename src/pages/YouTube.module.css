@@ -1,0 +1,118 @@
+.page {
+  padding-top: calc(var(--navbar-height) + 48px);
+}
+
+.label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--accent-youtube);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.channelRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.channelIcon {
+  width: 44px;
+  height: 44px;
+  background: var(--accent-youtube-bg);
+  border: 2px solid var(--accent-youtube-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.channelName {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.channelDesc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.subscribeBtn {
+  margin-left: auto;
+  padding: 8px 20px;
+  background: var(--accent-youtube);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.subscribeBtn:hover {
+  opacity: 0.85;
+}
+
+.sectionTitle {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin: 32px 0 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.videoCard {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.videoCard:hover {
+  border-color: var(--accent-youtube-border);
+  transform: translateY(-2px);
+}
+
+.thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.videoTitle {
+  padding: 8px 10px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.moreLink {
+  display: block;
+  margin-top: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--accent-youtube);
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.moreLink:hover { opacity: 1; }
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .subscribeBtn { display: none; }
+}
