@@ -27,7 +27,7 @@ describe('Dev', () => {
 
   it('renders GitHub profile link', () => {
     render(<Dev />)
-    expect(screen.getByRole('link', { name: /github/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute(
       'href',
       'https://github.com/qwru0905'
     )
