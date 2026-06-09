@@ -125,3 +125,9 @@
   margin-left: 16px;
   flex-shrink: 0;
 }
+
+.statusMsg {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+}
