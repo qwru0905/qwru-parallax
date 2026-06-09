@@ -28,7 +28,7 @@ export default function YouTube() {
         <div className={styles.grid}>
           {videos.map((video) => (
             <a
-              key={video.id + video.title}
+              key={video.id}
               href={`https://www.youtube.com/watch?v=${video.id}`}
               target="_blank"
               rel="noreferrer"
