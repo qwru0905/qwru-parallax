@@ -24,6 +24,7 @@ export function useGitHubRepos(username: string): UseGitHubReposResult {
   useEffect(() => {
     setLoading(true)
     setError(null)
+    setRepos([])
     const controller = new AbortController()
     fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`, {
       signal: controller.signal,

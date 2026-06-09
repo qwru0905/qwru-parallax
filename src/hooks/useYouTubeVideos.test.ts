@@ -59,4 +59,18 @@ describe('useYouTubeVideos', () => {
     expect(result.current.error).toBe('영상을 불러오지 못했습니다.')
     expect(result.current.videos).toEqual([])
   })
+
+  it('sets error when playlist fetch fails', async () => {
+    const channelResponse = {
+      items: [{ contentDetails: { relatedPlaylists: { uploads: 'UU_test_playlist' } } }],
+    }
+    global.fetch = vi.fn()
+      .mockResolvedValueOnce({ ok: true, json: () => Promise.resolve(channelResponse) } as unknown as Response)
+      .mockResolvedValueOnce({ ok: false } as unknown as Response)
+
+    const { result } = renderHook(() => useYouTubeVideos('UC_test'))
+    await waitFor(() => expect(result.current.loading).toBe(false))
+    expect(result.current.error).toBe('영상을 불러오지 못했습니다.')
+    expect(result.current.videos).toEqual([])
+  })
 })

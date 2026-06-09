@@ -20,6 +20,7 @@ export function useYouTubeVideos(channelId: string, maxResults = 6): UseYouTubeV
   useEffect(() => {
     setLoading(true)
     setError(null)
+    setVideos([])
     const apiKey = import.meta.env.VITE_YOUTUBE_API_KEY
     if (!apiKey) {
       setError('YouTube API 키가 설정되지 않았습니다.')
