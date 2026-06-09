@@ -112,6 +112,12 @@
 
 .moreLink:hover { opacity: 1; }
 
+.statusMsg {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+}
+
 @media (max-width: 600px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
   .subscribeBtn { display: none; }

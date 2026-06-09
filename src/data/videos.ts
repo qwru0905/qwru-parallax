@@ -3,6 +3,3 @@
 export const channelId = 'YOUR_CHANNEL_ID'
 export const channelUrl = 'https://www.youtube.com/@YOUR_CHANNEL_NAME'
 export const channelName = '채널 이름을 입력하세요'
-
-// Temporary: removed when YouTube.tsx is wired to useYouTubeVideos hook (Task 5)
-export const videos: { id: string; title: string }[] = []

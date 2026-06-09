@@ -1,8 +1,11 @@
 import PageLayout from '../components/PageLayout'
-import { channelUrl, channelName, videos } from '../data/videos'
+import { channelUrl, channelName, channelId } from '../data/videos'
+import { useYouTubeVideos } from '../hooks/useYouTubeVideos'
 import styles from './YouTube.module.css'
 
 export default function YouTube() {
+  const { videos, loading, error } = useYouTubeVideos(channelId)
+
   return (
     <PageLayout>
       <div className={styles.page}>
@@ -25,6 +28,8 @@ export default function YouTube() {
         </div>
 
         <p className={styles.sectionTitle}>최신 영상</p>
+        {loading && <p className={styles.statusMsg}>영상을 불러오는 중...</p>}
+        {error && <p className={styles.statusMsg}>{error}</p>}
         <div className={styles.grid}>
           {videos.map((video) => (
             <a
