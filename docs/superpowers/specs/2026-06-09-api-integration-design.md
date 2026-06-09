@@ -146,7 +146,7 @@ VITE_YOUTUBE_API_KEY=실제_키_값
 3. **API 및 서비스 > 라이브러리** → "YouTube Data API v3" 검색 후 활성화
 4. **API 및 서비스 > 사용자 인증 정보** → "사용자 인증 정보 만들기" → "API 키"
 5. 생성된 키를 `.env.local`의 `VITE_YOUTUBE_API_KEY`에 입력
-6. (선택) API 키 제한: HTTP 리퍼러를 Cloudflare Pages 도메인으로 제한 (보안 강화)
+6. **API 키 제한 (필수):** 사용자 인증 정보 → 키 편집 → "애플리케이션 제한사항: HTTP 리퍼러" 선택 → Cloudflare Pages 도메인(`*.pages.dev`, 커스텀 도메인) 추가. 키가 노출되더라도 해당 도메인 외에서 사용 불가.
 
 ---
 
